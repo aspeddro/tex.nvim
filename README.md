@@ -21,7 +21,7 @@ A Neovim plugin for TeX written in Lua.
 
 ## Installation
 
-### [packer.nvim](https://github.com/wbthomason/packer.nvim)
+#### [packer.nvim](https://github.com/wbthomason/packer.nvim)
 
 ```lua
 use {
@@ -35,7 +35,7 @@ use {
 }
 ```
 
-### [paq-nvim](https://github.com/savq/paq-nvim)
+#### [paq-nvim](https://github.com/savq/paq-nvim)
 
 ```lua
 require "paq" {
@@ -43,11 +43,11 @@ require "paq" {
 }
 require'tex'.setup{
   engine = 'tectonic',
-  viewer = 'evince' -- your pdf viewer or 'xdg-open' to open default viewer
+  viewer = 'evince'
 }
 ```
 
-### [vim-plug](https://github.com/junegunn/vim-plug)
+#### [vim-plug](https://github.com/junegunn/vim-plug)
 
 ```lua
 Plug 'aspeddro/tex.nvim'
@@ -61,7 +61,7 @@ require'tex'.setup{
   engine = 'latexmk', -- tex engine
   compile = {
     events = { 'BufWritePost' }, -- compile when buffer is saved
-    watchlist = true -- enable feature to compile the index file when any file from watch list is changed
+    watchlist = true -- enable feature to compile file when any file from watch list is changed
   },
   viewer = nil,
   engines = { -- engines config
@@ -94,7 +94,9 @@ require'tex'.setup{
 
 ## Usage
 
-Make the current file the index:
+> Use `Tab` key for completion.
+
+Make file the index. If index is set then `:TexCompile` only compile the index.
 
 ```
 :TexSwitchIndex
@@ -104,6 +106,12 @@ Switch TeX engine:
 
 ```
 :TexSwitchEngine
+```
+
+Print the index file:
+
+```
+:TexCurrentIndex
 ```
 
 Add file to watch list:
@@ -118,11 +126,19 @@ Remove file from watch list:
 :TexRemove
 ```
 
-Compile the index file or current file:
+Print watch list:
+
+```
+:TexWatching
+```
+
+Compile the index file:
 
 ```
 :TexCompile
 ```
+
+> For specific file `:TexCompile path/to/some.tex`
 
 Kill job:
 
@@ -147,3 +163,6 @@ vim.api.nvim_set_keymap('n', '<leader>dd', ':TexRemove<CR>', { noremap = true, s
 ## TODO
 
 - [ ] Open log file
+- [ ] Scan dir with `vim.loop`
+- [ ] Short file name
+- [ ] Save session status
