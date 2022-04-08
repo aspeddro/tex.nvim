@@ -1,3 +1,5 @@
+> 2022-04-08: This plugin was archived because most of the resources it implements are available on the language server https://github.com/latex-lsp/texlab
+
 # tex.nvim
 
 A Neovim plugin for TeX written in Lua.
